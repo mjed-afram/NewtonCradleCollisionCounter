@@ -28,7 +28,7 @@ run the main.py script with the path to your video file as an argument:
 python main.py path/to/your/video.mp4
 
 # Dataset
-NOTE: The utilized parameters and functions are precisely adjusted for the dataset in use.
+Please note that while the parameters and functions utilized are finely tuned specifically for the dataset being used, the main pipeline and process are general and not specified for the dataset.
 Link to the dataset will be provided soon......
 
 
