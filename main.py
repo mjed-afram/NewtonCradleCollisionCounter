@@ -18,9 +18,12 @@ def main():
             
         hsvSegment = FramePreprocessor.HSVsegment(frame)
         processed_frame = FramePreprocessor.binarizeImage(hsvSegment)
+        filledGaps = FramePreprocessor.fillGaps(processed_frame)
+
+       
 
         # Display the resulting frame
-        cv.imshow("processed frame", processed_frame)
+        cv.imshow("processed frame", filledGaps)
 
         if cv.waitKey(50) & 0xFF == ord('q'):
             break

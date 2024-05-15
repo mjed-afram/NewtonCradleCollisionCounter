@@ -26,12 +26,24 @@ class FramePreprocessor():
         # convert to grayscale
         gray_frame = cv.cvtColor(median_filter, cv.COLOR_BGR2GRAY)
         # Adaptiv thresholding is helpfull when the illumination and the background change(illumination and background are static in this project). It dynamically adjusts the threshold value based on the local region's characteristics.
-        adaptive_thresh = cv.adaptiveThreshold(gray_frame, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY_INV, 15, 5)  # 25, 1
+        adaptive_thresh = cv.adaptiveThreshold(gray_frame, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY_INV, 15, 9)  # 15, 5
         # closing operation to fill the holes in the image
         kernel = cv.getStructuringElement(cv.MORPH_CROSS, (7, 7)) # (cv.MORPH_ELLIPSE, (3, 3))
         closing = cv.morphologyEx(adaptive_thresh, cv.MORPH_CLOSE, kernel)
         print(closing.shape)
 
         return closing
+    
+    @staticmethod
+    def fillGaps(frame):
+
+        floodfill = frame.copy()
+        h, w = floodfill.shape[:2]
+        mask = np.zeros((h+2, w+2), np.uint8)
+        cv.floodFill(floodfill, mask, (0, 0), 255)
+        floodfill_inv = cv.bitwise_not(floodfill)
+        filled_gaps = frame | floodfill_inv
+
+        return filled_gaps
     
     
