@@ -1,5 +1,6 @@
 import cv2 as cv
 from preprocessor import FramePreprocessor
+from tracker import Tracker
 
 
 def main():
@@ -19,6 +20,7 @@ def main():
         hsvSegment = FramePreprocessor.HSVsegment(frame)
         processed_frame = FramePreprocessor.binarizeImage(hsvSegment)
         filledGaps = FramePreprocessor.fillGaps(processed_frame)
+        frame_, box_positions = Tracker.extractCoordinates(filledGaps)
 
        
 
