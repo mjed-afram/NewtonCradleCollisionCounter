@@ -62,30 +62,3 @@ class Tracker():
         # Return the color frame with drawn contours and bounding boxes, and the list of box positions
         return color_frame , box_positions
     
-
-    def track(frame, coordinates):
-        
-        if len(coordinates) != 5:
-            pass
-
-        y_diff = abs(coordinates[-1][1] - coordinates[0][1])
-        x_diff = coordinates[-1][0] - coordinates[0][0]
-
-        last_x_coor = coordinates[-1][0]
-
-
-        min = 0
-        max = 50
-
-        while True:
-            
-            if len(coordinates) >= 5 and x_diff == 0:
-
-                return frame
-            
-            elif (min < ((abs(x_diff) * 100) / last_x_coor) < max) & ((y_diff / max) < abs(y_diff / x_diff) <= (y_diff / 1)) and len(coordinates) >=5:
-
-                return frame
-
-
-            return frame
