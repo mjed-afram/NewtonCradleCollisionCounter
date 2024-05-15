@@ -22,7 +22,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Usage
 https://github.com/mjed-afram/NewtonCradleCollisionCounter.git
-cd NewtonCradleCollisionCounter
+~bach cd NewtonCradleCollisionCounter
 To start processing a video file and detect collisions, 
 run the main.py script with the path to your video file as an argument:
 python main.py path/to/your/video.mp4
