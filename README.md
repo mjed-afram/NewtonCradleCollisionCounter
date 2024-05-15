@@ -27,8 +27,8 @@ To start processing a video file and detect collisions,
 run the main.py script with the path to your video file as an argument:
 python main.py path/to/your/video.mp4
 
-NOTE: Important: The utilized parameters and functions are precisely adjusted for the dataset in use.
 # Dataset
+NOTE: The utilized parameters and functions are precisely adjusted for the dataset in use.
 Link to the dataset will be provided soon......
 
 
