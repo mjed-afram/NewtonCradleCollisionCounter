@@ -1,5 +1,5 @@
 import cv2 as cv
-from preprocessor import ImagePreprocessor
+from preprocessor import FramePreprocessor
 
 
 def main():
@@ -16,8 +16,8 @@ def main():
             break
 
             
-        segmentor = ImagePreprocessor()
-        processed_frame = segmentor.binarizeImage(frame)
+        hsvSegment = FramePreprocessor.HSVsegment(frame)
+        processed_frame = FramePreprocessor.binarizeImage(hsvSegment)
 
         # Display the resulting frame
         cv.imshow("processed frame", processed_frame)

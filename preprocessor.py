@@ -2,9 +2,22 @@ import cv2 as cv
 import numpy as np
 
 
-class ImagePreprocessor():
+class FramePreprocessor():
     def __init__(self):
         pass
+
+
+    @staticmethod
+    def HSVsegment(frame):
+
+        blurr = cv.medianBlur(frame, 3)
+        hsv = cv.cvtColor(blurr, cv.COLOR_BGR2HSV)
+        lower_bound = np.array([10, 55, 120])     # 34 can be up to 100
+        upper_bound = np.array([180, 255, 255])
+        mask = cv.inRange(hsv, lower_bound, upper_bound)
+        result = cv.bitwise_and(frame, frame, mask=mask)
+
+        return result
 
     @staticmethod
     def binarizeImage(frame):
@@ -20,4 +33,5 @@ class ImagePreprocessor():
         print(closing.shape)
 
         return closing
+    
     
